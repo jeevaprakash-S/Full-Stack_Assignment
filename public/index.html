@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>Contact Management</h1>
+                <p>Manage your personal and professional contacts</p>
+            </div>
+
+            <button class="add-btn" onclick="openModal()">
+                + Add Contact
+            </button>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Dashboard Cards -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <span>Total Contacts</span>
+                    <h2 id="totalContacts">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📱</div>
+                <div>
+                    <span>Phone Contacts</span>
+                    <h2 id="phoneContacts">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✉️</div>
+                <div>
+                    <span>Email Contacts</span>
+                    <h2 id="emailContacts">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Contacts Section -->
+
+        <section class="contacts-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>My Contacts</h2>
+                    <p>View and manage your contacts</p>
+                </div>
+
+                <div class="search-box">
+                    🔍
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search contacts..."
+                        oninput="searchContacts()"
+                    >
+                </div>
+
+            </div>
+
+
+            <div id="contactsContainer" class="contacts-container">
+
+                <div class="loading">
+                    Loading contacts...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Add/Edit Modal -->
+
+    <div id="contactModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2 id="modalTitle">Add Contact</h2>
+                    <p>Enter contact information</p>
+                </div>
+
+                <button class="close-btn" onclick="closeModal()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <input type="hidden" id="contactMongoId">
+
+
+                <div class="form-group">
+
+                    <label>Contact ID</label>
+
+                    <input
+                        type="text"
+                        id="contactId"
+                        placeholder="C001"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="10 digit phone number"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div id="formMessage"></div>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Contact
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
